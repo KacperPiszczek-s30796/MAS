@@ -2,6 +2,7 @@ package org.example.Entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -32,9 +33,11 @@ public class Person {
                 ", middleName='" + middleName + '\'' +
                 ", surname='" + surname + '\'' +
                 ", nationality='" + nationality + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
+                ", age=" + age() +
                 '}';
     }
-    void age(){}
+    int age(){
+        return Period.between(dateOfBirth, LocalDate.now()).getYears();
+    }
 
 }

@@ -21,4 +21,8 @@ public class Apointment {
     public Patient patient;
     @ManyToOne
     public Doctor doctor;
+    @Override
+    public String toString(){
+        return observations;
+    }
 }

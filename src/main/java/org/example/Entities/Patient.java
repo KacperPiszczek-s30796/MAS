@@ -19,6 +19,20 @@ public class Patient extends Person {
     public List<Apointment> getAppointments(){
         return appointments;
     }
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + ID +
+                ", name='" + name + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", surname='" + surname + '\'' +
+                ", nationality='" + nationality + '\'' +
+                ", age=" + age() +
+                ", weight=" + weight +
+                ", height=" + height +
+                ", state=" + state +
+                '}';
+    }
     void BookAppointment(){}
     void ViewAppointment(){}
     void ConfirmTreatment(){}
