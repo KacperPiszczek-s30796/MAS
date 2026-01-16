@@ -15,21 +15,21 @@
 
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping class="org.example.Person"/>
-        <mapping class="org.example.Doctor"/>
-        <mapping class="org.example.Ambulance"/>
-        <mapping class="org.example.Apointment"/>
-        <mapping class="org.example.Department"/>
-        <mapping class="org.example.Driver"/>
-        <mapping class="org.example.FirstAidBoat"/>
-        <mapping class="org.example.FirstAidHelicopter"/>
-        <mapping class="org.example.FirstAidVan"/>
-        <mapping class="org.example.Paramedic"/>
-        <mapping class="org.example.Patient"/>
-        <mapping class="org.example.SurgicalBoat"/>
-        <mapping class="org.example.SurgicalHelicopter"/>
-        <mapping class="org.example.SurgicalVan"/>
-        <mapping class="org.example.Patient_Ambulance"/>
+        <mapping class="org.example.Entities.Person"/>
+        <mapping class="org.example.Entities.Doctor"/>
+        <mapping class="org.example.Entities.Ambulance"/>
+        <mapping class="org.example.Entities.Apointment"/>
+        <mapping class="org.example.Entities.Department"/>
+        <mapping class="org.example.Entities.Driver"/>
+        <mapping class="org.example.Entities.FirstAidBoat"/>
+        <mapping class="org.example.Entities.FirstAidHelicopter"/>
+        <mapping class="org.example.Entities.FirstAidVan"/>
+        <mapping class="org.example.Entities.Paramedic"/>
+        <mapping class="org.example.Entities.Patient"/>
+        <mapping class="org.example.Entities.SurgicalBoat"/>
+        <mapping class="org.example.Entities.SurgicalHelicopter"/>
+        <mapping class="org.example.Entities.SurgicalVan"/>
+        <mapping class="org.example.Entities.Patient_Ambulance"/>
 
     </session-factory>
 </hibernate-configuration>

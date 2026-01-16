@@ -1,14 +1,17 @@
-package org.example;
+package org.example.Entities;
+
+import org.example.Enums.StatePatient;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Patient extends Person{
-    String sex;
+public class Patient extends Person {
+    public String sex;
     @Enumerated(EnumType.STRING)
-    StatePatient state;
-    float weight, height;
+    public StatePatient state;
+    public float weight;
+    public float height;
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     List<Apointment> appointments;
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)

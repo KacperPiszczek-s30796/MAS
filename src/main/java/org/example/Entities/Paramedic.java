@@ -1,10 +1,11 @@
-package org.example;
+package org.example.Entities;
 
 import javax.persistence.Entity;
 
 @Entity
 public class Paramedic extends Person {
-    int CPRNumber, ALSNumber;
+    public int CPRNumber;
+    public int ALSNumber;
     void PickupPatient(){}
     void RecordPatientRefusal(){}
     void CompleteMissingData(){}

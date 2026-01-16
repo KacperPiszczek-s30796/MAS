@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Entities;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,8 +9,9 @@ public class Ambulance {
     @Id
     @GeneratedValue
     int ID;
-    int plateNumber, capacity;
-    String model;
+    public int plateNumber;
+    public int capacity;
+    public String model;
     @OneToMany(mappedBy = "ambulance", cascade = CascadeType.ALL)
     List<Patient_Ambulance> patientAmbulances;
 }

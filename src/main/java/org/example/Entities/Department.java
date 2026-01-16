@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Entities;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,10 +8,10 @@ public class Department {
     @Id
     @GeneratedValue
     int ID;
-    String name;
-    int floorNumber;
+    public String name;
+    public int floorNumber;
     @OneToOne
-    Doctor HeadOfDepartment;
+    public Doctor HeadOfDepartment;
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
     List<Doctor> doctors;
     void AssignNewHead(){}

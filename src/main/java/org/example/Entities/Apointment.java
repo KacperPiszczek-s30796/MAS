@@ -1,4 +1,6 @@
-package org.example;
+package org.example.Entities;
+
+import org.example.Enums.StatusAppointment;
 
 import javax.persistence.*;
 import java.time.LocalTime;

@@ -1,9 +1,15 @@
 package org.example;
 
+import org.example.Entities.*;
+import org.example.Enums.LicenseType;
+import org.example.Enums.StateDoctor;
+import org.example.Enums.StatePatient;
+import org.example.GUI.MainFrame;
+import org.example.Utilities.HibernateUtil;
 import org.hibernate.Session;
 
+import javax.swing.*;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -247,6 +253,8 @@ public class Main
     }
     public static void main( String[] args )
     {
-
+        SwingUtilities.invokeLater(() -> {
+            new MainFrame().setVisible(true);
+        });
     }
 }

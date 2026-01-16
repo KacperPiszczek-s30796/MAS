@@ -1,8 +1,7 @@
-package org.example;
+package org.example.Entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -10,8 +9,11 @@ public class Person {
     @Id
     @GeneratedValue
     int ID;
-    String name, middleName, surname, nationality;
-    LocalDate dateOfBirth;
+    public String name;
+    String middleName;
+    public String surname;
+    public String nationality;
+    public LocalDate dateOfBirth;
     public Person(){
 
     }

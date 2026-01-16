@@ -1,18 +1,20 @@
-package org.example;
+package org.example.Entities;
+
+import org.example.Enums.StateDoctor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-public class Doctor extends Person{
+public class Doctor extends Person {
     @Enumerated(EnumType.STRING)
     StateDoctor state;
     String specialization;
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
     List<Apointment> appointments;
     @ManyToOne
-    Department department;
+    public Department department;
     public Doctor() {}
     public Doctor(String name, String middleName, String surname, String nationality, LocalDate dob,
                   StateDoctor state, String specialization) {
