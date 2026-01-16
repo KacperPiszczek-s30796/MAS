@@ -3,6 +3,8 @@ package org.example.Entities;
 import org.example.Enums.StatePatient;
 
 import javax.persistence.*;
+import java.time.LocalTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -35,5 +37,6 @@ public class Patient extends Person {
     }
     void BookAppointment(){}
     void ViewAppointment(){}
+    void ViewAppointment(Date date, LocalTime time){}
     void ConfirmTreatment(){}
 }

@@ -29,7 +29,7 @@ public class Doctor extends Person {
                 ", specialization='" + specialization + '\'' +
                 '}';
     }
-    void TrackAmbulances(){}
+    static void TrackAmbulances(){}
     void ExaminePatient(){}
     void AssessSeverity(){}
     void AdmitOrRelease(){}
