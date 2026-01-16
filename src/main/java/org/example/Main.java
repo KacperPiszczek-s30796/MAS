@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Main
 {
-    public void loadFirstTimeData(){
+    public static void loadFirstTimeData(){
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
@@ -133,8 +133,104 @@ public class Main
             session.save(pa);
         }
 
-        session.getTransaction().commit();
-        session.close();
+        //Paramedic
+        Paramedic pm1 = new Paramedic();
+        pm1.name = "Adam";
+        pm1.surname = "Kaczmarek";
+        pm1.nationality = "Polish";
+        pm1.dateOfBirth = LocalDate.of(1992, 4, 12);
+        pm1.CPRNumber = 10001;
+        pm1.ALSNumber = 20001;
+
+        Paramedic pm2 = new Paramedic();
+        pm2.name = "Marta";
+        pm2.surname = "Dabrowska";
+        pm2.nationality = "Polish";
+        pm2.dateOfBirth = LocalDate.of(1995, 9, 3);
+        pm2.CPRNumber = 10002;
+        pm2.ALSNumber = 20002;
+
+        Paramedic pm3 = new Paramedic();
+        pm3.name = "Krzysztof";
+        pm3.surname = "Wojcik";
+        pm3.nationality = "Polish";
+        pm3.dateOfBirth = LocalDate.of(1988, 6, 20);
+        pm3.CPRNumber = 10003;
+        pm3.ALSNumber = 20003;
+
+        Paramedic pm4 = new Paramedic();
+        pm4.name = "Natalia";
+        pm4.surname = "Kaminska";
+        pm4.nationality = "Polish";
+        pm4.dateOfBirth = LocalDate.of(1993, 1, 17);
+        pm4.CPRNumber = 10004;
+        pm4.ALSNumber = 20004;
+
+        Paramedic pm5 = new Paramedic();
+        pm5.name = "Pawel";
+        pm5.surname = "Lewicki";
+        pm5.nationality = "Polish";
+        pm5.dateOfBirth = LocalDate.of(1990, 12, 1);
+        pm5.CPRNumber = 10005;
+        pm5.ALSNumber = 20005;
+
+        session.save(pm1);
+        session.save(pm2);
+        session.save(pm3);
+        session.save(pm4);
+        session.save(pm5);
+
+        //Driver
+        Driver dr1 = new Driver();
+        dr1.name = "Michal";
+        dr1.surname = "Nowicki";
+        dr1.nationality = "Polish";
+        dr1.dateOfBirth = LocalDate.of(1985, 8, 14);
+        dr1.licenseType = LicenseType.manual;
+        dr1.licenseNumber = 50001;
+        dr1.drivingPermit = "PL-C-50001";
+
+        Driver dr2 = new Driver();
+        dr2.name = "Karolina";
+        dr2.surname = "Piotrowska";
+        dr2.nationality = "Polish";
+        dr2.dateOfBirth = LocalDate.of(1991, 2, 25);
+        dr2.licenseType = LicenseType.automatic;
+        dr2.licenseNumber = 50002;
+        dr2.drivingPermit = "PL-C-50002";
+
+        Driver dr3 = new Driver();
+        dr3.name = "Lukasz";
+        dr3.surname = "Kubiak";
+        dr3.nationality = "Polish";
+        dr3.dateOfBirth = LocalDate.of(1987, 10, 5);
+        dr3.licenseType = LicenseType.manual;
+        dr3.licenseNumber = 50003;
+        dr3.drivingPermit = "PL-C-50003";
+
+        Driver dr4 = new Driver();
+        dr4.name = "Agnieszka";
+        dr4.surname = "Szymanska";
+        dr4.nationality = "Polish";
+        dr4.dateOfBirth = LocalDate.of(1994, 6, 11);
+        dr4.licenseType = LicenseType.automatic;
+        dr4.licenseNumber = 50004;
+        dr4.drivingPermit = "PL-C-50004";
+
+        Driver dr5 = new Driver();
+        dr5.name = "Rafal";
+        dr5.surname = "Baran";
+        dr5.nationality = "Polish";
+        dr5.dateOfBirth = LocalDate.of(1982, 3, 30);
+        dr5.licenseType = LicenseType.manual;
+        dr5.licenseNumber = 50005;
+        dr5.drivingPermit = "PL-C-50005";
+
+        session.save(dr1);
+        session.save(dr2);
+        session.save(dr3);
+        session.save(dr4);
+        session.save(dr5);
 
         session.getTransaction().commit();
         session.close();
