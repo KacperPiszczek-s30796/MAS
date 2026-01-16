@@ -11,13 +11,14 @@ public class Apointment {
     @Id
     @GeneratedValue
     int ID;
-    Date date;
-    LocalTime time, duration;
+    public Date date;
+    public LocalTime time;
+    public LocalTime duration;
     @Enumerated(EnumType.STRING)
-    StatusAppointment status;
-    String observations;
+    public StatusAppointment status;
+    public String observations;
     @ManyToOne
-    Patient patient;
+    public Patient patient;
     @ManyToOne
-    Doctor doctor;
+    public Doctor doctor;
 }

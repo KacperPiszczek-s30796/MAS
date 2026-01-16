@@ -4,12 +4,14 @@ import org.example.Entities.*;
 import org.example.Enums.LicenseType;
 import org.example.Enums.StateDoctor;
 import org.example.Enums.StatePatient;
+import org.example.Enums.StatusAppointment;
 import org.example.GUI.MainFrame;
 import org.example.Utilities.HibernateUtil;
 import org.hibernate.Session;
 
 import javax.swing.*;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -82,21 +84,18 @@ public class Main
         }
 
         //APPOINTMENTS
-        List<Patient> patients2 = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            Apointment a = new Apointment();
+            a.date = new Date();
+            a.time = LocalTime.of(9 + (i % 5), 0);
+            a.duration = LocalTime.of(0, 30);
+            a.status = StatusAppointment.confirmed;
+            a.observations = "Routine check";
 
-        for (int i = 1; i <= 7; i++) {
-            Patient p = new Patient();
-            p.name = "PatientName" + i;
-            p.surname = "PatientSurname" + i;
-            p.nationality = "Polish";
-            p.dateOfBirth = LocalDate.of(1990 + i, 1, 1);
-            p.sex = (i % 2 == 0) ? "Female" : "Male";
-            p.state = StatePatient.Treated;
-            p.weight = 70 + i;
-            p.height = 170 + i;
+            a.patient = patients.get(i % patients.size());
+            a.doctor = (i % 2 == 0) ? d1 : d3;
 
-            session.save(p);
-            patients2.add(p);
+            session.save(a);
         }
 
         //AMBULANCES
@@ -253,6 +252,7 @@ public class Main
     }
     public static void main( String[] args )
     {
+        //loadFirstTimeData();
         SwingUtilities.invokeLater(() -> {
             new MainFrame().setVisible(true);
         });

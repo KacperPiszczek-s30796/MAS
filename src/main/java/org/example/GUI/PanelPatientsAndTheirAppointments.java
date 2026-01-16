@@ -1,7 +1,13 @@
 package org.example.GUI;
 
+import org.example.Entities.Apointment;
+import org.example.Entities.Patient;
+import org.example.Utilities.PatientRepository;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 public class PanelPatientsAndTheirAppointments extends JPanel {
     public PanelPatientsAndTheirAppointments() {
@@ -11,20 +17,30 @@ public class PanelPatientsAndTheirAppointments extends JPanel {
         title.setFont(new Font("Arial", Font.BOLD, 16));
         add(title, BorderLayout.NORTH);
 
-        // Example data (temporary)
-        String[] names = {
-                "Maria Kowalska",
-                "John Smith",
-                "Anna Nowak",
-                "Peter Johnson",
-                "Katarzyna Zielinska",
-                "Michael Brown"
-        };
+        List<Patient> patients = PatientRepository.findAllWithAppointments();
+        JList<Patient> list = new JList<>(patients.toArray(new Patient[0]));
+        JList<Apointment> appointmentList = new JList<>();
 
-        JList<String> nameList = new JList<>(names);
-        nameList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        list.addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                Patient selected = list.getSelectedValue();
+                if (selected != null) {
+                    List<Apointment> apps = selected.getAppointments();
+                    appointmentList.setListData(
+                            apps.toArray(new Apointment[0])
+                    );
+                }
+            }
+        });
 
-        JScrollPane scrollPane = new JScrollPane(nameList);
-        add(scrollPane, BorderLayout.CENTER);
+
+        JScrollPane patientScroll = new JScrollPane(list);
+        JScrollPane appointmentScroll = new JScrollPane(appointmentList);
+
+        JPanel centerPanel = new JPanel(new GridLayout(1, 2));
+        centerPanel.add(patientScroll);
+        centerPanel.add(appointmentScroll);
+
+        add(centerPanel, BorderLayout.CENTER);
     }
 }

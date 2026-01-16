@@ -16,6 +16,9 @@ public class Patient extends Person {
     List<Apointment> appointments;
     @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     List<Patient_Ambulance> patientAmbulances;
+    public List<Apointment> getAppointments(){
+        return appointments;
+    }
     void BookAppointment(){}
     void ViewAppointment(){}
     void ConfirmTreatment(){}
