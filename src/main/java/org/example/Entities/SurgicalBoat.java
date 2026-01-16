@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 
 @Entity
 public class SurgicalBoat extends Ambulance {
-    String equipmentDescription;
-    int length, maxSpeed;
-    boolean isEquipmentWaterproof;
+    public String equipmentDescription;
+    public int length, maxSpeed;
+    public boolean isEquipmentWaterproof;
 }

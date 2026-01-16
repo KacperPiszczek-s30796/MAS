@@ -8,8 +8,8 @@ import javax.persistence.Enumerated;
 
 @Entity
 public class FirstAidVan extends Ambulance {
-    String supplyDescription;
-    int maxSpeed, cargoVolume;
+    public String supplyDescription;
+    public int maxSpeed, cargoVolume;
     @Enumerated(EnumType.STRING)
-    Terrain terrain;
+    public Terrain terrain;
 }

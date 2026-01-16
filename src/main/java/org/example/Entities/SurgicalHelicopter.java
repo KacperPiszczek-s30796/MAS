@@ -4,6 +4,6 @@ import javax.persistence.Entity;
 
 @Entity
 public class SurgicalHelicopter extends Ambulance {
-    String equipmentDescription;
-    int maxAltitude, requiredAreaToLand;
+    public String equipmentDescription;
+    public int maxAltitude, requiredAreaToLand;
 }

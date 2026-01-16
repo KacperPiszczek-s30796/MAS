@@ -1,10 +1,7 @@
 package org.example;
 
 import org.example.Entities.*;
-import org.example.Enums.LicenseType;
-import org.example.Enums.StateDoctor;
-import org.example.Enums.StatePatient;
-import org.example.Enums.StatusAppointment;
+import org.example.Enums.*;
 import org.example.GUI.MainFrame;
 import org.example.Utilities.HibernateUtil;
 import org.hibernate.Session;
@@ -75,7 +72,7 @@ public class Main
             p.nationality = "Polish";
             p.dateOfBirth = LocalDate.of(1990 + i, 1, 1);
             p.sex = (i % 2 == 0) ? "Female" : "Male";
-            p.state = StatePatient.Treated;
+            p.state = StatePatient.NeedingHelp;
             p.weight = 70 + i;
             p.height = 170 + i;
 
@@ -89,7 +86,7 @@ public class Main
             a.date = new Date();
             a.time = LocalTime.of(9 + (i % 5), 0);
             a.duration = LocalTime.of(0, 30);
-            a.status = StatusAppointment.confirmed;
+            a.status = StatusAppointment.reserved;
             a.observations = "Routine check";
 
             a.patient = patients.get(i % patients.size());
@@ -100,24 +97,56 @@ public class Main
 
         //AMBULANCES
         FirstAidVan van1 = new FirstAidVan();
-        van1.model = "FA Van A";
+        van1.model = "FA Van";
         van1.plateNumber = 1001;
         van1.capacity = 2;
+        van1.cargoVolume = 20;
+        van1.terrain = Terrain.urban;
+        van1.maxSpeed = 100;
+        van1.supplyDescription = "yes";
 
-        FirstAidVan van2 = new FirstAidVan();
-        van2.model = "FA Van B";
+        SurgicalVan van2 = new SurgicalVan();
+        van2.model = "S Van";
         van2.plateNumber = 1002;
         van2.capacity = 2;
+        van2.cargoVolume = 40;
+        van2.terrain = Terrain.rural;
+        van2.maxSpeed = 120;
+        van2.equipmentDescription = "anesthesia equipment present";
+
+        FirstAidBoat boat1 = new FirstAidBoat();
+        boat1.model = "FA Boat";
+        boat1.plateNumber = 1001;
+        boat1.capacity = 2;
+        boat1.length = 6;
+        boat1.maxSpeed = 60;
+        boat1.isEquipmentWaterproof = true;
+        boat1.supplyDescription = "no";
+
+        SurgicalBoat boat2 = new SurgicalBoat();
+        boat2.model = "S Boat";
+        boat2.plateNumber = 1001;
+        boat2.capacity = 2;
+        boat2.length = 8;
+        boat2.maxSpeed = 50;
+        boat2.isEquipmentWaterproof = true;
+        boat2.equipmentDescription = "stability equipment present";
 
         FirstAidHelicopter heli1 = new FirstAidHelicopter();
-        heli1.model = "FA Helicopter A";
+        heli1.model = "FA Helicopter";
         heli1.plateNumber = 2001;
         heli1.capacity = 3;
+        heli1.maxAltitude = 3;
+        heli1.requiredAreaToLand = 100;
+        heli1.supplyDescription = "yes";
 
-        FirstAidHelicopter heli2 = new FirstAidHelicopter();
-        heli2.model = "FA Helicopter B";
+        SurgicalHelicopter heli2 = new SurgicalHelicopter();
+        heli2.model = "S Helicopter";
         heli2.plateNumber = 2002;
         heli2.capacity = 3;
+        heli2.maxAltitude = 2;
+        heli2.requiredAreaToLand = 120;
+        heli2.equipmentDescription = "high precision equipment present";
 
         session.save(van1);
         session.save(van2);
@@ -130,7 +159,7 @@ public class Main
             pa.date = new Date();
             pa.dateArrivalAtHospital = new Date();
             pa.locationOfAccident = "Street " + (i + 1);
-            pa.status = StatePatient.Delivered;
+            pa.status = patients.get(i).state;
 
             pa.patient = patients.get(i);
             pa.ambulance = (i % 2 == 0) ? van1 : heli1;
