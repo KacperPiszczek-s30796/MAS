@@ -7,6 +7,7 @@ import org.example.Utilities.HibernateUtil;
 import org.hibernate.Session;
 
 import javax.swing.*;
+import java.io.File;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -272,7 +273,8 @@ public class Main
 
     public static void main( String[] args )
     {
-        //loadFirstTimeData();
+        File file = new File("data/masdb.mv.db");
+        if (!file.exists())loadFirstTimeData();
         SwingUtilities.invokeLater(() -> {
             new MainFrame().setVisible(true);
         });
