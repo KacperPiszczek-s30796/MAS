@@ -269,16 +269,7 @@ public class Main
         session.getTransaction().commit();
         session.close();
     }
-    public void testshow1(){
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
 
-        Person p = session.get(Person.class, 1);
-        System.out.println(p);
-
-        session.getTransaction().commit();
-        session.close();
-    }
     public static void main( String[] args )
     {
         //loadFirstTimeData();

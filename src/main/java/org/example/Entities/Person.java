@@ -10,7 +10,7 @@ public class Person {
     @Id
     @GeneratedValue
     int ID;
-    public String name;
+    public String name, password;
     String middleName;
     public String surname;
     public String nationality;
@@ -24,6 +24,7 @@ public class Person {
         this.surname = surname;
         this.nationality = nationality;
         this.dateOfBirth = dateOfBirth;
+        password = "123";
     }
     @Override
     public String toString() {
