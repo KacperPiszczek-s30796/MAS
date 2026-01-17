@@ -32,6 +32,8 @@ public class Paramedic_home extends JPanel {
     private Patient selectedPatient;
     private Patient_Ambulance selectedTransport;
 
+    private boolean updatingList = false;
+
     public Paramedic_home() {
         setLayout(new BorderLayout());
 
@@ -63,11 +65,17 @@ public class Paramedic_home extends JPanel {
         loadNeedingHelpPatients();
 
         patientList.addListSelectionListener(e -> {
-            if (!e.getValueIsAdjusting()) {
-                selectedPatient = patientList.getSelectedValue();
+            if (e.getValueIsAdjusting()) return;
+
+            if (updatingList) return; // prevent clearing selection during reload
+
+            Patient p = patientList.getSelectedValue();
+            if (p != null) {
+                selectedPatient = p;
                 loadSelectedPatientData();
             }
         });
+
 
         btnArrived.addActionListener(e -> confirmArrival());
         btnPickup.addActionListener(e -> confirmPickup());
@@ -76,6 +84,8 @@ public class Paramedic_home extends JPanel {
     }
 
     private void loadNeedingHelpPatients() {
+        updatingList = true;
+
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             List<Patient> list = session.createQuery(
                             "from Patient p where p.state = :st", Patient.class)
@@ -84,8 +94,21 @@ public class Paramedic_home extends JPanel {
 
             patientModel.clear();
             list.forEach(patientModel::addElement);
+
+            // if selected patient still exists in list -> keep it selected
+            if (selectedPatient != null) {
+                for (int i = 0; i < patientModel.size(); i++) {
+                    if (patientModel.get(i).ID == selectedPatient.ID) {
+                        patientList.setSelectedIndex(i);
+                        break;
+                    }
+                }
+            }
+        } finally {
+            updatingList = false;
         }
     }
+
 
     private void loadSelectedPatientData() {
         if (selectedPatient == null) return;
@@ -157,7 +180,6 @@ public class Paramedic_home extends JPanel {
         }
         JOptionPane.showMessageDialog(this, message);
         loadNeedingHelpPatients();
-        clearInfo();
     }
 
     private void clearInfo() {
