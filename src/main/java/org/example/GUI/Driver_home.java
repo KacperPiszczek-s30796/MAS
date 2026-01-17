@@ -6,8 +6,8 @@ import org.example.Entities.Driver;
 import javax.swing.*;
 
 public class Driver_home extends JPanel {
-    public static Driver driver;
-    public static void setUser(Driver d){
+    public Driver driver;
+    public void setUser(Driver d){
         driver = d;
     }
 }

@@ -9,7 +9,7 @@ import java.time.Period;
 public class Person {
     @Id
     @GeneratedValue
-    int ID;
+    public int ID;
     public String name, password, middleName, surname, nationality;
     public LocalDate dateOfBirth;
     public Person(){

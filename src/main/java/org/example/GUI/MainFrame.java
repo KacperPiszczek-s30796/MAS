@@ -9,12 +9,16 @@ import java.awt.*;
 
 public class MainFrame extends JFrame {
 
-    private JPanel contentPanel, patientPanel, doctorPanel, paramedicPanel, driverPanel;
+    private JPanel contentPanel;
     private WelcomePanel welcomePanel;
     private LoginPanel loginPanel;
     private RoleChoicePanel loginRoleChoice;
     private RoleChoicePanel registerRoleChoice;
     private RegisterPanel registerPanel;
+    private Paramedic_home paramedicHome;
+    private Patient_home patientHome;
+    private Doctor_home doctorHome;
+    private Driver_home driverHome;
 
     public MainFrame() {
         setTitle("Emergency Transport System");
@@ -33,20 +37,20 @@ public class MainFrame extends JFrame {
         loginPanel = new LoginPanel(this);
 
         // HOME PANELS
-        patientPanel = new JPanel();
-        doctorPanel = new JPanel();
-        paramedicPanel = new JPanel();
-        driverPanel = new JPanel();
+        paramedicHome = new Paramedic_home();
+        patientHome = new Patient_home();
+        doctorHome = new Doctor_home();
+        driverHome = new Driver_home();
 
         // ADD ALL PANELS
         contentPanel.add(welcomePanel, "WELCOME");
         contentPanel.add(loginRoleChoice, "ROLE_LOGIN");
         contentPanel.add(registerRoleChoice, "ROLE_REGISTER");
         contentPanel.add(loginPanel, "LOGIN");
-        contentPanel.add(patientPanel, "PATIENT_HOME");
-        contentPanel.add(doctorPanel, "DOCTOR_HOME");
-        contentPanel.add(paramedicPanel, "PARAMEDIC_HOME");
-        contentPanel.add(driverPanel, "DRIVER_HOME");
+        contentPanel.add(patientHome, "PATIENT_HOME");
+        contentPanel.add(doctorHome, "DOCTOR_HOME");
+        contentPanel.add(paramedicHome, "PARAMEDIC_HOME");
+        contentPanel.add(driverHome, "DRIVER_HOME");
 
         add(contentPanel, BorderLayout.CENTER);
 
@@ -91,19 +95,19 @@ public class MainFrame extends JFrame {
 
         switch (role) {
             case PATIENT:
-                Patient_home.setUser((Patient) user);
+                patientHome.setUser((Patient) user);
                 cl.show(contentPanel, "PATIENT_HOME");
                 break;
             case DOCTOR:
-                Doctor_home.setUser((Doctor) user);
+                doctorHome.setUser((Doctor) user);
                 cl.show(contentPanel, "DOCTOR_HOME");
                 break;
             case PARAMEDIC:
-                Paramedic_home.setUser((Paramedic) user);
+                paramedicHome.setUser((Paramedic) user);
                 cl.show(contentPanel, "PARAMEDIC_HOME");
                 break;
             case DRIVER:
-                Driver_home.setUser((Driver) user);
+                driverHome.setUser((Driver) user);
                 cl.show(contentPanel, "DRIVER_HOME");
                 break;
         }
