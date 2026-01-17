@@ -10,7 +10,7 @@ import java.util.List;
 public class Doctor extends Person {
     @Enumerated(EnumType.STRING)
     StateDoctor state;
-    String specialization;
+    public String specialization;
     @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
     List<Apointment> appointments;
     @ManyToOne

@@ -1,12 +1,13 @@
 package org.example.Utilities;
 
+import org.example.Entities.Person;
 import org.example.Enums.UserRole;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 public class LoginService {
 
-    public static boolean login(UserRole role, String name, String surname, String password) {
+    public static Person login(UserRole role, String name, String surname, String password) {
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 
@@ -26,15 +27,15 @@ public class LoginService {
                     hql = "from Driver d where d.name = :n and d.surname = :s and d.password = :p";
                     break;
                 default:
-                    return false;
+                    return null;
             }
 
-            Query<?> q = session.createQuery(hql);
+            Query<Person> q = (Query<Person>) session.createQuery(hql);
             q.setParameter("n", name);
             q.setParameter("s", surname);
             q.setParameter("p", password);
 
-            return q.uniqueResult() != null;
+            return q.uniqueResult();
         }
     }
 }

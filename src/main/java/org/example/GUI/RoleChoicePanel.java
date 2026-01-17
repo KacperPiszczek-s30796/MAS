@@ -1,5 +1,6 @@
 package org.example.GUI;
 
+import org.example.Enums.AuthMode;
 import org.example.Enums.UserRole;
 
 import javax.swing.*;
@@ -7,7 +8,7 @@ import java.awt.*;
 
 public class RoleChoicePanel extends JPanel {
 
-    public RoleChoicePanel(MainFrame frame) {
+    public RoleChoicePanel(MainFrame frame, AuthMode mode) {
         setBounds(0, 0, 600, 400);
         setLayout(new BorderLayout());
 
@@ -33,9 +34,17 @@ public class RoleChoicePanel extends JPanel {
         backButton.addActionListener(e -> frame.showWelcome());
         add(backButton, BorderLayout.SOUTH);
 
-        patientButton.addActionListener(e -> frame.showLogin(UserRole.PATIENT));
-        doctorButton.addActionListener(e -> frame.showLogin(UserRole.DOCTOR));
-        paramedicButton.addActionListener(e -> frame.showLogin(UserRole.PARAMEDIC));
-        driverButton.addActionListener(e -> frame.showLogin(UserRole.DRIVER));
+        // This is the key part:
+        if (mode == AuthMode.LOGIN) {
+            patientButton.addActionListener(e -> frame.showLogin(UserRole.PATIENT));
+            doctorButton.addActionListener(e -> frame.showLogin(UserRole.DOCTOR));
+            paramedicButton.addActionListener(e -> frame.showLogin(UserRole.PARAMEDIC));
+            driverButton.addActionListener(e -> frame.showLogin(UserRole.DRIVER));
+        } else {
+            patientButton.addActionListener(e -> frame.showRegister(UserRole.PATIENT));
+            doctorButton.addActionListener(e -> frame.showRegister(UserRole.DOCTOR));
+            paramedicButton.addActionListener(e -> frame.showRegister(UserRole.PARAMEDIC));
+            driverButton.addActionListener(e -> frame.showRegister(UserRole.DRIVER));
+        }
     }
 }

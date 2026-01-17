@@ -21,7 +21,7 @@ public class WelcomePanel extends JPanel {
         buttonPanel.add(loginButton);
         add(buttonPanel, BorderLayout.SOUTH);
 
-        registerButton.addActionListener(e -> frame.showRoleChoice());
-        loginButton.addActionListener(e -> frame.showRoleChoice());
+        registerButton.addActionListener(e -> frame.showRoleChoiceRegister());
+        loginButton.addActionListener(e -> frame.showRoleChoiceLogin());
     }
 }

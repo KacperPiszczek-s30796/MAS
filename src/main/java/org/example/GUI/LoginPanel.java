@@ -1,5 +1,6 @@
 package org.example.GUI;
 
+import org.example.Entities.Person;
 import org.example.Enums.UserRole;
 import org.example.Utilities.LoginService;
 
@@ -62,10 +63,11 @@ public class LoginPanel extends JPanel {
         String name = nameField.getText();
         String surname = surnameField.getText();
         String password = new String(passwordField.getPassword());
-        boolean success = LoginService.login(role, name, surname, password);
 
-        if (success) {
-            frame.showHome(role);
+        Person loggedUser = LoginService.login(role, name, surname, password);
+
+        if (loggedUser != null) {
+            frame.showHome(role, loggedUser);
         } else {
             errorLabel.setText("Incorrect name, surname or password");
         }
