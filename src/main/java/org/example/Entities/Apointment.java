@@ -22,7 +22,7 @@ public class Apointment {
     @ManyToOne
     public Doctor doctor;
     @Override
-    public String toString(){
-        return observations;
+    public String toString() {
+        return date + " " + time + " — Dr. " + doctor.surname;
     }
 }
