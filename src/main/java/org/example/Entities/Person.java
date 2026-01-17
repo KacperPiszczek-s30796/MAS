@@ -10,13 +10,10 @@ public class Person {
     @Id
     @GeneratedValue
     int ID;
-    public String name, password;
-    String middleName;
-    public String surname;
-    public String nationality;
+    public String name, password, middleName, surname, nationality;
     public LocalDate dateOfBirth;
     public Person(){
-
+        password = "123";
     }
     public Person(String name,String middleName, String surname, String nationality, LocalDate dateOfBirth){
         this.name = name;

@@ -15,7 +15,7 @@ public class Doctor extends Person {
     List<Apointment> appointments;
     @ManyToOne
     public Department department;
-    public Doctor() {}
+    public Doctor() {super();}
     public Doctor(String name, String middleName, String surname, String nationality, LocalDate dob,
                   StateDoctor state, String specialization) {
         super(name, middleName, surname, nationality, dob);

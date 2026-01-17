@@ -35,6 +35,7 @@ public class Patient extends Person {
                 ", state=" + state +
                 '}';
     }
+    public Patient(){super();}
     void BookAppointment(){}
     void ViewAppointment(){}
     void ViewAppointment(Date date, LocalTime time){}

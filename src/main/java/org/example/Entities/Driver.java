@@ -12,5 +12,6 @@ public class Driver extends Person {
     public LicenseType licenseType;
     public int licenseNumber;
     public String drivingPermit;
+    public Driver(){super();}
     void viewAmbulanceInformation(){}
 }

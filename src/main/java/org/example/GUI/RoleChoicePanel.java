@@ -1,5 +1,7 @@
 package org.example.GUI;
 
+import org.example.Enums.UserRole;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -31,9 +33,9 @@ public class RoleChoicePanel extends JPanel {
         backButton.addActionListener(e -> frame.showWelcome());
         add(backButton, BorderLayout.SOUTH);
 
-        patientButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Patient selected"));
-        doctorButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Doctor selected"));
-        paramedicButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Paramedic selected"));
-        driverButton.addActionListener(e -> JOptionPane.showMessageDialog(this, "Driver selected"));
+        patientButton.addActionListener(e -> frame.showLogin(UserRole.PATIENT));
+        doctorButton.addActionListener(e -> frame.showLogin(UserRole.DOCTOR));
+        paramedicButton.addActionListener(e -> frame.showLogin(UserRole.PARAMEDIC));
+        driverButton.addActionListener(e -> frame.showLogin(UserRole.DRIVER));
     }
 }
