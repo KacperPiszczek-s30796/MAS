@@ -80,6 +80,17 @@ public class Main
             session.save(p);
             patients.add(p);
         }
+        Patient p = new Patient();
+        p.name = "PatientName" + 100;
+        p.surname = "PatientSurname" + 100;
+        p.nationality = "Polish";
+        p.dateOfBirth = LocalDate.of(1990 , 1, 1);
+        p.sex = "Female";
+        p.weight = 70;
+        p.height = 170;
+
+        session.save(p);
+        patients.add(p);
 
         //APPOINTMENTS
         for (int i = 0; i < 10; i++) {
