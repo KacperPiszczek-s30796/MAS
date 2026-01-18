@@ -107,6 +107,58 @@ public class Main
             session.save(a);
         }
 
+        //Driver
+        Driver dr1 = new Driver();
+        dr1.name = "Michal";
+        dr1.surname = "Nowicki";
+        dr1.nationality = "Polish";
+        dr1.dateOfBirth = LocalDate.of(1985, 8, 14);
+        dr1.licenseType = LicenseType.manual;
+        dr1.licenseNumber = 50001;
+        dr1.drivingPermit = "PL-C-50001";
+
+        Driver dr2 = new Driver();
+        dr2.name = "Karolina";
+        dr2.surname = "Piotrowska";
+        dr2.nationality = "Polish";
+        dr2.dateOfBirth = LocalDate.of(1991, 2, 25);
+        dr2.licenseType = LicenseType.automatic;
+        dr2.licenseNumber = 50002;
+        dr2.drivingPermit = "PL-C-50002";
+
+        Driver dr3 = new Driver();
+        dr3.name = "Lukasz";
+        dr3.surname = "Kubiak";
+        dr3.nationality = "Polish";
+        dr3.dateOfBirth = LocalDate.of(1987, 10, 5);
+        dr3.licenseType = LicenseType.manual;
+        dr3.licenseNumber = 50003;
+        dr3.drivingPermit = "PL-C-50003";
+
+        Driver dr4 = new Driver();
+        dr4.name = "Agnieszka";
+        dr4.surname = "Szymanska";
+        dr4.nationality = "Polish";
+        dr4.dateOfBirth = LocalDate.of(1994, 6, 11);
+        dr4.licenseType = LicenseType.automatic;
+        dr4.licenseNumber = 50004;
+        dr4.drivingPermit = "PL-C-50004";
+
+        Driver dr5 = new Driver();
+        dr5.name = "Rafal";
+        dr5.surname = "Baran";
+        dr5.nationality = "Polish";
+        dr5.dateOfBirth = LocalDate.of(1982, 3, 30);
+        dr5.licenseType = LicenseType.manual;
+        dr5.licenseNumber = 50005;
+        dr5.drivingPermit = "PL-C-50005";
+
+        session.save(dr1);
+        session.save(dr2);
+        session.save(dr3);
+        session.save(dr4);
+        session.save(dr5);
+
         //AMBULANCES
         FirstAidVan van1 = new FirstAidVan();
         van1.model = "FA Van";
@@ -116,6 +168,7 @@ public class Main
         van1.terrain = Terrain.urban;
         van1.maxSpeed = 100;
         van1.supplyDescription = "yes";
+        van1.driver = dr1;  // <-- ASSIGN DRIVER
 
         SurgicalVan van2 = new SurgicalVan();
         van2.model = "S Van";
@@ -125,24 +178,27 @@ public class Main
         van2.terrain = Terrain.rural;
         van2.maxSpeed = 120;
         van2.equipmentDescription = "anesthesia equipment present";
+        van2.driver = dr2;  // <-- ASSIGN DRIVER
 
         FirstAidBoat boat1 = new FirstAidBoat();
         boat1.model = "FA Boat";
-        boat1.plateNumber = 1001;
+        boat1.plateNumber = 1003;
         boat1.capacity = 2;
         boat1.length = 6;
         boat1.maxSpeed = 60;
         boat1.isEquipmentWaterproof = true;
         boat1.supplyDescription = "no";
+        boat1.driver = dr3;  // <-- ASSIGN DRIVER
 
         SurgicalBoat boat2 = new SurgicalBoat();
         boat2.model = "S Boat";
-        boat2.plateNumber = 1001;
+        boat2.plateNumber = 1004;
         boat2.capacity = 2;
         boat2.length = 8;
         boat2.maxSpeed = 50;
         boat2.isEquipmentWaterproof = true;
         boat2.equipmentDescription = "stability equipment present";
+        boat2.driver = dr4;  // <-- ASSIGN DRIVER
 
         FirstAidHelicopter heli1 = new FirstAidHelicopter();
         heli1.model = "FA Helicopter";
@@ -151,6 +207,7 @@ public class Main
         heli1.maxAltitude = 3;
         heli1.requiredAreaToLand = 100;
         heli1.supplyDescription = "yes";
+        heli1.driver = dr5;  // <-- ASSIGN DRIVER
 
         SurgicalHelicopter heli2 = new SurgicalHelicopter();
         heli2.model = "S Helicopter";
@@ -159,6 +216,7 @@ public class Main
         heli2.maxAltitude = 2;
         heli2.requiredAreaToLand = 120;
         heli2.equipmentDescription = "high precision equipment present";
+        heli2.driver = dr1;
 
         session.save(van1);
         session.save(van2);
@@ -226,57 +284,7 @@ public class Main
         session.save(pm4);
         session.save(pm5);
 
-        //Driver
-        Driver dr1 = new Driver();
-        dr1.name = "Michal";
-        dr1.surname = "Nowicki";
-        dr1.nationality = "Polish";
-        dr1.dateOfBirth = LocalDate.of(1985, 8, 14);
-        dr1.licenseType = LicenseType.manual;
-        dr1.licenseNumber = 50001;
-        dr1.drivingPermit = "PL-C-50001";
 
-        Driver dr2 = new Driver();
-        dr2.name = "Karolina";
-        dr2.surname = "Piotrowska";
-        dr2.nationality = "Polish";
-        dr2.dateOfBirth = LocalDate.of(1991, 2, 25);
-        dr2.licenseType = LicenseType.automatic;
-        dr2.licenseNumber = 50002;
-        dr2.drivingPermit = "PL-C-50002";
-
-        Driver dr3 = new Driver();
-        dr3.name = "Lukasz";
-        dr3.surname = "Kubiak";
-        dr3.nationality = "Polish";
-        dr3.dateOfBirth = LocalDate.of(1987, 10, 5);
-        dr3.licenseType = LicenseType.manual;
-        dr3.licenseNumber = 50003;
-        dr3.drivingPermit = "PL-C-50003";
-
-        Driver dr4 = new Driver();
-        dr4.name = "Agnieszka";
-        dr4.surname = "Szymanska";
-        dr4.nationality = "Polish";
-        dr4.dateOfBirth = LocalDate.of(1994, 6, 11);
-        dr4.licenseType = LicenseType.automatic;
-        dr4.licenseNumber = 50004;
-        dr4.drivingPermit = "PL-C-50004";
-
-        Driver dr5 = new Driver();
-        dr5.name = "Rafal";
-        dr5.surname = "Baran";
-        dr5.nationality = "Polish";
-        dr5.dateOfBirth = LocalDate.of(1982, 3, 30);
-        dr5.licenseType = LicenseType.manual;
-        dr5.licenseNumber = 50005;
-        dr5.drivingPermit = "PL-C-50005";
-
-        session.save(dr1);
-        session.save(dr2);
-        session.save(dr3);
-        session.save(dr4);
-        session.save(dr5);
 
         session.getTransaction().commit();
         session.close();
